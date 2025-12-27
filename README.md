@@ -1,6 +1,8 @@
 # Arduino Blinds Controller
 
-This project automates the opening and closing of window blinds using an Arduino-controlled motor driver. The blinds adjust direction at a specified interval (default: 12 hours) using an H-bridge motor driver.
+This project automates the opening and closing of window blinds using an Arduino-controlled motor driver. The blinds adjust direction at a specified interval (default: 12 hours) using an H-bridge motor driver. 
+
+(This was my first time ever using arduino which made it a fun memory)
 
 ## Features
 

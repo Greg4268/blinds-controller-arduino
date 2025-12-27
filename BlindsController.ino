@@ -6,6 +6,7 @@ const int directionPin2 = 11; // Direction control (IN2)
 
 bool directionState = true;
 bool triggeredToday = false;
+int dailyTriggerCount = 0;
 
 void setup() {
     Serial.begin(9600);
@@ -32,18 +33,21 @@ void loop() {
     Serial.printf("Time: %02d:%02d:%02d\n", hour, minute, second);
 
     // Trigger at 8:00:00
-    if (hour == 9 && minute == 0 && second == 0 && !triggeredToday)
+    if (hour == 8 && minute == 0 && dailyTriggerCount < 2)
     {
-        Serial.println('Triggered at 8AM!');
+        Serial.println('Running motor.');
         runMotor(directionState);
+        dailyTriggerCount += 1;
         directionState = !directionState;
     }
 
-    if(hour == 8 && minute == 1)
+    if(hour == 20 && minute == 0 && dailyTriggerCount < 2)
     {
-        triggeredToday = false;
+        runMotor(directionState);
+        dailyTriggerCount += 1;
+        directionState = !directionState;
     }
-    delay(1000);
+    delay(55000);// 55 second delay 
 }
 
 void runMotor(bool direction) {
